@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launchstr — Your Airbnb. Your Brand. Your Bookings.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0B1120;
+      --navy-light: #111d35;
+      --white: #FAFAF8;
+      --teal: #00C9A7;
+      --teal-dark: #00a98c;
+      --gold: #F0A500;
+      --gray: #8a93a8;
+      --card-bg: #141f35;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(11,17,32,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--teal-dark); }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(0,201,167,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(240,165,0,0.06) 0%, transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+    }
+    .hero-inner { max-width: 760px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,201,167,0.15);
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(0,201,167,0.3);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+    }
+    h1 span { color: var(--teal); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 1rem;
+      line-height: 1.7;
+    }
+    .hero-proof {
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+      letter-spacing: -0.2px;
+    }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 1.5rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 540px;
+      margin: 0 auto 3rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .text-center { text-align: center; }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      background: var(--navy);
+      color: var(--white);
+    }
+    #how .section-sub { color: var(--gray); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .step:hover { border-color: rgba(0,201,167,0.3); }
+    .step-num {
+      position: absolute;
+      top: -1px; left: -1px;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 16px 0 8px 0;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--white); }
+    .step p { font-size: 0.92rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── WHAT YOU GET ── */
+    #features { background: #f5f5f3; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .feature-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
+
+    /* ── SOCIAL PROOF ── */
+    #proof {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+    .quote-block {
+      max-width: 720px;
+      margin: 0 auto 3rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+    }
+    .quote-block::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.5rem;
+      font-size: 5rem;
+      color: var(--teal);
+      opacity: 0.3;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .quote-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(250,250,248,0.9);
+      margin-bottom: 1.5rem;
+    }
+    .quote-attr { font-size: 0.9rem; color: var(--teal); font-weight: 600; }
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-val { font-size: 1.2rem; font-weight: 800; color: var(--white); }
+    .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+    .gathering-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,201,167,0.4);
+      transition: border-color 0.2s;
+    }
+    .gathering-link:hover { border-color: var(--teal); }
+
+    /* ── WHO IT'S FOR ── */
+    #who { background: var(--white); }
+    .who-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .who-cols { grid-template-columns: 1fr; } }
+    .who-card {
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .who-card.yes { background: rgba(0,201,167,0.06); border: 1px solid rgba(0,201,167,0.2); }
+    .who-card.no { background: rgba(240,165,0,0.05); border: 1px solid rgba(240,165,0,0.2); }
+    .who-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    .who-card.yes h3 { color: var(--teal); }
+    .who-card.no h3 { color: var(--gold); }
+    .who-card ul { list-style: none; }
+    .who-card ul li { font-size: 0.9rem; color: #444; padding: 0.35rem 0; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .who-card ul li::before { flex-shrink: 0; margin-top: 0.05rem; }
+    .who-card.yes ul li::before { content: '✅'; }
+    .who-card.no ul li::before { content: '❌'; }
+
+    /* ── PRICING ── */
+    #pricing { background: #f5f5f3; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+    .price-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+    .price-card.popular {
+      border: 2px solid var(--teal);
+      box-shadow: 0 8px 32px rgba(0,201,167,0.15);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -1px; right: 1.5rem;
+      background: var(--teal);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0 0 8px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .price-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .price-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .price-amount {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -1px;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .price-cadence { font-size: 0.85rem; color: #888; margin-bottom: 1.25rem; }
+    .price-features { list-style: none; margin-bottom: 1.75rem; }
+    .price-features li {
+      font-size: 0.88rem;
+      color: #444;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .price-features li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .btn-outline {
+      display: block;
+      text-align: center;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+    .price-card.popular .btn-outline {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--navy);
+    }
+    .price-card.popular .btn-outline:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+
+    /* ── FAQ ── */
+    #faq { background: var(--white); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1.25rem 0;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--teal); }
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+      color: var(--gray);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding-bottom: 1.25rem;
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER CTA ── */
+    #footer-cta {
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 70% 50%, rgba(0,201,167,0.1) 0%, transparent 60%);
+      text-align: center;
+      padding: 6rem 1.5rem;
+      color: var(--white);
+    }
+    #footer-cta .section-title { color: var(--white); }
+    #footer-cta .section-sub { color: var(--gray); margin-bottom: 2rem; }
+    footer {
+      background: #070e1e;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.25rem; }
+      .nav-logo { font-size: 1.2rem; }
+      section { padding: 4rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Launch<span>str</span></div>
+  <a href="form.html" class="nav-cta">Get Started →</a>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">✦ STR Marketing Agency</div>
+    <h1>Your Airbnb.<br><span>Your Brand.</span><br>Your Bookings.</h1>
+    <p class="hero-sub">We build custom websites and automated social media pipelines for Airbnb owners — so you stop paying platform fees and start owning your guests.</p>
+    <p class="hero-proof">✦ Our first client got a direct booking within 4 days of launch.</p>
+    <a href="form.html" class="btn-primary">Get Started →</a>
+  </div>
+</section>
+
+<!-- SECTION 2: HOW IT WORKS -->
+<section id="how">
+  <div class="container text-center">
+    <span class="section-label">Process</span>
+    <h2 class="section-title" style="color: var(--white);">Simple. Fast. Proven.</h2>
+    <p class="section-sub">Three steps from sign-up to direct bookings.</p>
+    <div class="steps">
+      <div class="step fade-up">
+        <span class="step-num">01</span>
+        <div class="step-icon">📋</div>
+        <h3>Tell Us About Your Property</h3>
+        <p>Fill out our intake form. Property details, photos, amenities, vibe. We handle everything from there.</p>
+      </div>
+      <div class="step fade-up delay-1">
+        <span class="step-num">02</span>
+        <div class="step-icon">🌐</div>
+        <h3>We Build Your Brand</h3>
+        <p>Custom website. Instagram account. Content pipeline. Live within 7–10 business days.</p>
+      </div>
+      <div class="step fade-up delay-2">
+        <span class="step-num">03</span>
+        <div class="step-icon">📅</div>
+        <h3>Your Calendar Fills</h3>
+        <p>AI-powered posts go out on schedule. Your property stays top of mind. Direct bookings start coming in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHAT YOU GET -->
+<section id="features">
+  <div class="container text-center">
+    <span class="section-label">What's Included</span>
+    <h2 class="section-title">Everything You Need to<br>Own Your Bookings</h2>
+    <p class="section-sub">A complete marketing system for your short-term rental — not a template, not a tool. Done for you.</p>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">🌐</div>
+        <h3>Custom Direct Booking Website</h3>
+        <p>Built for your property. Animated hero, amenity showcase, reviews, booking widget, FAQ. Optimized for mobile and conversion.</p>
+      </div>
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon">📸</div>
+        <h3>Instagram Account, Built & Branded</h3>
+        <p>Profile setup, bio, highlights, content strategy tuned to your location and open calendar windows.</p>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered Content Pipeline</h3>
+        <p>Event research + post drafts delivered weekly for your approval. You approve. We post. Audience grows.</p>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon">📊</div>
+        <h3>Direct Booking Integration</h3>
+        <p>We connect your site to Hospitable, OwnerRez, Hostaway, Guesty, Lodgify, and most major platforms. No double bookings, no middleman fees.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3b: HOW WE COMPARE -->
+<section id="compare" style="background: var(--navy); padding: 5rem 1.5rem;">
+  <div class="container text-center">
+    <span class="section-label">Why Launchstr</span>
+    <h2 class="section-title" style="color: var(--white);">We're Not Another<br>Marketing Agency</h2>
+    <p class="section-sub">We researched every competitor. The table speaks for itself.</p>
+
+    <div style="overflow-x: auto; margin-top: 2rem;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+        <thead>
+          <tr>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); min-width: 140px;">Service</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">Setup</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">Monthly</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">AI-Powered</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">Website</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">Instagram</th>
+            <th style="padding: 0.85rem 1rem; color: var(--gray); font-weight: 600; border-bottom: 1px solid var(--border); text-align: center;">Content Pipeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(255,255,255,0.02);">
+            <td style="padding: 0.85rem 1rem; color: var(--gray); border-bottom: 1px solid var(--border);">Boostly</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$4,000</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$97</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: var(--teal); font-size: 1rem;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 1rem; color: var(--gray); border-bottom: 1px solid var(--border);">GrowYourBnb</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">Custom</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">~$2,500</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: var(--teal); font-size: 1rem;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: var(--teal); font-size: 1rem;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+          </tr>
+          <tr style="background: rgba(255,255,255,0.02);">
+            <td style="padding: 0.85rem 1rem; color: var(--gray); border-bottom: 1px solid var(--border);">CraftedStays</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$0</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$90</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: var(--teal); font-size: 1rem;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.85rem 1rem; color: var(--gray); border-bottom: 1px solid var(--border);">Generic Social Agency</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$0</td>
+            <td style="padding: 0.85rem 1rem; color: var(--white); border-bottom: 1px solid var(--border); text-align: center;">$1,500+</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: var(--teal); font-size: 1rem;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); text-align: center; color: #e05; font-size: 1rem;">✗</td>
+          </tr>
+          <tr style="background: rgba(0,201,167,0.06); border: 1px solid rgba(0,201,167,0.2);">
+            <td style="padding: 0.85rem 1rem; color: var(--teal); font-weight: 800; border-bottom: 1px solid rgba(0,201,167,0.2);">⭐ Launchstr</td>
+            <td style="padding: 0.85rem 1rem; color: var(--teal); font-weight: 800; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center;">$997</td>
+            <td style="padding: 0.85rem 1rem; color: var(--teal); font-weight: 800; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center;">$297</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center; color: var(--teal); font-size: 1.1rem; font-weight: 800;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center; color: var(--teal); font-size: 1.1rem; font-weight: 800;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center; color: var(--teal); font-size: 1.1rem; font-weight: 800;">✓</td>
+            <td style="padding: 0.85rem 1rem; border-bottom: 1px solid rgba(0,201,167,0.2); text-align: center; color: var(--teal); font-size: 1.1rem; font-weight: 800;">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--gray);">Full-service. AI-powered. STR-specific. At a fraction of the price.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: SOCIAL PROOF -->
+<section id="proof">
+  <div class="container">
+    <span class="section-label">Social Proof</span>
+    <h2 class="section-title" style="color: var(--white);">Proof It Works</h2>
+    <div class="quote-block fade-up">
+      <p class="quote-text">"We built The Gathering Pines in Flagstaff, AZ — a 5-bedroom luxury retreat. Within 4 days of the website going live, we had our first direct booking. No ads. Just a great website and a content strategy that got in front of the right people."</p>
+      <div class="quote-attr">— Alex, Owner, The Gathering Pines</div>
+    </div>
+    <div class="stats-bar fade-up delay-1">
+      <div class="stat">
+        <div class="stat-val">⭐ 4.97</div>
+        <div class="stat-label">Star Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">🗓️ 4 Days</div>
+        <div class="stat-label">First Booking Post-Launch</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">📸 Active</div>
+        <div class="stat-label">Instagram Growth</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">🏠 5BR</div>
+        <div class="stat-label">Flagstaff Luxury Retreat</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 1.5rem;">
+      <a href="https://thegatheringpines.com" target="_blank" rel="noopener" class="gathering-link">
+        View The Gathering Pines ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: WHO IT'S FOR -->
+<section id="who">
+  <div class="container text-center">
+    <span class="section-label">Fit</span>
+    <h2 class="section-title">Is This Right for You?</h2>
+    <p class="section-sub" style="margin-bottom: 2.5rem;">We work best with a specific kind of host — and we're upfront about that.</p>
+    <div class="who-cols">
+      <div class="who-card yes fade-up">
+        <h3>✅ Perfect For</h3>
+        <ul>
+          <li>Individual Airbnb / VRBO hosts</li>
+          <li>Properties with 3+ bedrooms</li>
+          <li>Owners tired of paying OTA fees</li>
+          <li>Hosts ready to build a real brand</li>
+          <li>Anyone who wants marketing on autopilot</li>
+        </ul>
+      </div>
+      <div class="who-card no fade-up delay-1">
+        <h3>❌ Not a Fit For</h3>
+        <ul>
+          <li>Property managers with 10+ units</li>
+          <li>Anyone looking for a DIY template</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: PRICING -->
+<section id="pricing">
+  <div class="container text-center">
+    <span class="section-label">Pricing</span>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-sub">One-time setup. Optional monthly retainer. No long-term contracts.</p>
+    <div class="pricing-grid">
+
+      <div class="price-card fade-up">
+        <div class="price-icon">🏠</div>
+        <h3>Launch Package</h3>
+        <div class="price-amount">$997</div>
+        <div class="price-cadence">one-time</div>
+        <ul class="price-features">
+          <li>Custom branded website + domain setup</li>
+          <li>Instagram account setup + branding</li>
+          <li>Content strategy + first 8 posts drafted</li>
+          <li>Booking platform integration</li>
+          <li>30-day onboarding support</li>
+        </ul>
+        <a href="form.html" class="btn-outline">Get Started →</a>
+      </div>
+
+      <div class="price-card fade-up delay-1">
+        <div class="price-icon">📅</div>
+        <h3>Growth Retainer</h3>
+        <div class="price-amount">$297</div>
+        <div class="price-cadence">per month</div>
+        <ul class="price-features">
+          <li>2 posts/week drafted for your approval</li>
+          <li>Weekly event research for your area</li>
+          <li>Buffer scheduling management</li>
+          <li>Monthly strategy check-in</li>
+        </ul>
+        <a href="form.html" class="btn-outline">Get Started →</a>
+      </div>
+
+      <div class="price-card popular fade-up delay-2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-icon">🚀</div>
+        <h3>Premium Retainer</h3>
+        <div class="price-amount">$497</div>
+        <div class="price-cadence">per month</div>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Instagram Stories + Highlights</li>
+          <li>Paid ad creative</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="form.html" class="btn-outline">Get Started →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: FAQ -->
+<section id="faq">
+  <div class="container text-center">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-sub" style="margin-bottom: 2.5rem;">Everything you need to know before getting started.</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does setup take?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">7–10 business days from when you submit your intake form and photos.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do I have to approve every post?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes — always. Nothing goes live without your sign-off.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What booking platforms do you integrate with?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Hospitable, OwnerRez, Hostaway, Guesty, Lodgify, and most major platforms.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I already have an Instagram account?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We audit and optimize it instead of starting from scratch.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do I own my website?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">100%. Your domain, your GitHub repo, your site. If you ever stop working with us, you keep everything.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I cancel?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Monthly retainer, no long-term contracts. Cancel anytime.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: FOOTER CTA -->
+<section id="footer-cta">
+  <div class="container">
+    <h2 class="section-title">Ready to Own Your Bookings?</h2>
+    <p class="section-sub" style="margin: 1rem auto 2rem;">Fill out the intake form and we'll get back to you within 24 hours.</p>
+    <a href="form.html" class="btn-primary">Get Started →</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="mailto:hello@launchstr.io">hello@launchstr.io</a> &nbsp;·&nbsp; <a href="form.html">Get Started</a> &nbsp;·&nbsp; © 2026 Launchstr. All rights reserved.</p>
+</footer>
+
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+
+      // Toggle clicked
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Scroll Animations (IntersectionObserver)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
