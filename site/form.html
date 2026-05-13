@@ -239,7 +239,9 @@
     </div>
 
     <!-- FORM ELEMENT -->
-    <form id="mainForm" novalidate>
+    <form id="mainForm" data-netlify="true" name="launchstr-intake" netlify-honeypot="bot-field" action="/success.html" novalidate>
+      <input type="hidden" name="form-name" value="launchstr-intake" />
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
       <!-- ── STEP 1: Your Listing ── -->
       <div class="step active step-card" data-step="1">
