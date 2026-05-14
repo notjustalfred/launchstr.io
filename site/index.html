@@ -1373,7 +1373,13 @@
             </ul>
           </div>
         </div>
-        <button type="button" class="f-pay-btn" id="fPayBtn" onclick="fSubmitAndPay()" disabled>Select a Package Above to Continue →</button>
+        <div class="f-group" style="margin-top:1.5rem">
+          <label class="f-check-item" style="background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.12);align-items:flex-start">
+            <input type="checkbox" id="fTermsCheck" name="agreed_to_terms" value="yes" required onchange="fCheckTerms()" style="margin-top:0.2rem" />
+            <span style="font-size:0.84rem;color:#444;line-height:1.55">I have read and agree to Launchstr's <a href="terms.html" target="_blank" style="color:var(--teal);font-weight:600;text-decoration:underline">Terms of Service &amp; Release of Liability</a>. I understand that Launchstr provides marketing services only and that I, as the property owner, am solely responsible for the safety of my property, my guests, and maintaining adequate insurance coverage.</span>
+          </label>
+        </div>
+        <button type="button" class="f-pay-btn" id="fPayBtn" onclick="fSubmitAndPay()" disabled>Select a Package &amp; Agree to Terms to Continue →</button>
         <p class="f-pay-note">🔒 Secured by Stripe · Encrypted · No surprise charges</p>
       </div>
 
@@ -1396,7 +1402,8 @@
 </section>
 
 <footer>
-  <p><a href="mailto:hello@launchstr.io">hello@launchstr.io</a> &nbsp;·&nbsp; <a href="#start">Get Started</a> &nbsp;·&nbsp; © 2026 Launchstr. All rights reserved.</p>
+  <p><a href="mailto:hello@launchstr.io">hello@launchstr.io</a> &nbsp;·&nbsp; <a href="#start">Get Started</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Liability</a> &nbsp;·&nbsp; © 2026 Launchstr. All rights reserved.</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">Launchstr is a service of Apache Legacy Group LLC &nbsp;·&nbsp; Arizona Limited Liability Company</p>
 </footer>
 
 <script>
@@ -1435,9 +1442,20 @@
     card.classList.add('selected');
     card.querySelector('input[type="radio"]').checked = true;
     fStripeLink = card.dataset.stripe;
+    fCheckTerms();
+  }
+
+  function fCheckTerms() {
+    const termsChecked = document.getElementById('fTermsCheck') && document.getElementById('fTermsCheck').checked;
     const btn = document.getElementById('fPayBtn');
-    btn.disabled = false;
-    btn.textContent = 'Submit & Pay — ' + card.querySelector('.f-pkg-name').textContent + ' →';
+    if (fStripeLink && termsChecked) {
+      btn.disabled = false;
+      const pkgName = document.querySelector('.f-pkg-card.selected .f-pkg-name');
+      btn.textContent = 'Submit & Pay — ' + (pkgName ? pkgName.textContent : '') + ' →';
+    } else {
+      btn.disabled = true;
+      btn.textContent = 'Select a Package & Agree to Terms to Continue →';
+    }
   }
 
   // Photo upload counter
