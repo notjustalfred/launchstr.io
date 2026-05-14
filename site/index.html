@@ -450,6 +450,160 @@
       .nav-logo { font-size: 1.2rem; }
       section { padding: 4rem 1.25rem; }
     }
+
+    /* ── EMBEDDED FORM ── */
+    #start {
+      background: #f5f5f3;
+      padding: 5rem 1.5rem 6rem;
+    }
+    #start > .container { max-width: 700px; }
+    #start .section-title { margin-bottom: 0.5rem; }
+    #start .section-sub { margin-bottom: 2rem; }
+
+    /* Progress */
+    .f-progress-wrap { margin-bottom: 1.75rem; }
+    .f-progress-track { height: 5px; background: rgba(0,0,0,0.1); border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+    .f-progress-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width 0.4s ease; }
+    .f-progress-meta { display: flex; justify-content: space-between; font-size: 0.8rem; color: #777; font-weight: 600; }
+
+    /* Step cards */
+    .f-step { display: none; }
+    .f-step.active { display: block; animation: fFadeUp 0.3s ease; }
+    @keyframes fFadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .f-card { background: #fff; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); }
+    .f-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.4rem; }
+    .f-title { font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    .f-sub { font-size: 0.9rem; color: #666; margin-bottom: 1.75rem; line-height: 1.65; }
+
+    /* Fields */
+    .f-group { margin-bottom: 1.4rem; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.4rem; }
+    @media (max-width: 540px) { .f-row { grid-template-columns: 1fr; } }
+    .f-label { display: block; font-size: 0.84rem; font-weight: 600; color: #0B1120; margin-bottom: 0.4rem; }
+    .f-opt { font-weight: 400; color: #aaa; font-size: 0.78rem; }
+    .f-input, .f-select, .f-textarea {
+      width: 100%; padding: 0.72rem 1rem;
+      border: 1.5px solid rgba(0,0,0,0.15); border-radius: 10px;
+      font-size: 0.9rem; font-family: 'Inter', sans-serif;
+      color: #0B1120; background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .f-input:focus, .f-select:focus, .f-textarea:focus {
+      border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,201,167,0.2);
+    }
+    .f-textarea { resize: vertical; min-height: 95px; line-height: 1.6; font-family: 'Inter',sans-serif; }
+    .f-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+    }
+    .f-helper { font-size: 0.78rem; color: #999; margin-top: 0.3rem; line-height: 1.5; }
+
+    /* Checkboxes & radios */
+    .f-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+    @media (max-width: 440px) { .f-check-grid { grid-template-columns: 1fr; } }
+    .f-radio-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .f-check-item, .f-radio-item {
+      display: flex; align-items: flex-start; gap: 0.55rem;
+      background: #f9f9f7; border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 10px; padding: 0.55rem 0.75rem;
+      cursor: pointer; font-size: 0.87rem; line-height: 1.4;
+      transition: border-color 0.15s, background 0.15s; user-select: none;
+    }
+    .f-check-item:has(input:checked), .f-radio-item:has(input:checked) {
+      border-color: var(--teal); background: rgba(0,201,167,0.06);
+    }
+    .f-check-item input, .f-radio-item input { flex-shrink:0; margin-top:0.15rem; accent-color: var(--teal); width:15px; height:15px; cursor:pointer; }
+
+    /* Amenity groups */
+    .f-amenity-group { margin-bottom: 1.75rem; }
+    .f-amenity-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #999; margin-bottom: 0.65rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(0,0,0,0.08); }
+
+    /* File upload */
+    .f-file-zone {
+      border: 2px dashed rgba(0,201,167,0.4); border-radius: 14px;
+      padding: 2rem 1.5rem; text-align: center;
+      background: rgba(0,201,167,0.02); cursor: pointer; position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .f-file-zone:hover, .f-file-zone.drag-over { border-color: var(--teal); background: rgba(0,201,167,0.07); }
+    .f-file-zone input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+    .f-file-zone-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .f-file-zone h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .f-file-zone p { font-size: 0.82rem; color: #888; }
+    .f-file-count { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 700; color: var(--teal); }
+
+    /* Package cards */
+    .f-pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    @media (max-width: 600px) { .f-pkg-grid { grid-template-columns: 1fr; } }
+    .f-pkg-card {
+      border: 2px solid rgba(0,0,0,0.1); border-radius: 16px; padding: 1.4rem;
+      cursor: pointer; position: relative; text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .f-pkg-card:hover { border-color: rgba(0,201,167,0.5); }
+    .f-pkg-card.selected { border-color: var(--teal); background: rgba(0,201,167,0.05); box-shadow: 0 4px 20px rgba(0,201,167,0.15); }
+    .f-pkg-card input[type="radio"] { position:absolute; opacity:0; pointer-events:none; }
+    .f-pkg-name { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--teal); margin-bottom: 0.4rem; }
+    .f-pkg-price { font-size: 1.55rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 0.1rem; color: #0B1120; }
+    .f-pkg-cadence { font-size: 0.75rem; color: #999; margin-bottom: 0.85rem; }
+    .f-pkg-card ul { list-style: none; text-align: left; font-size: 0.8rem; color: #555; }
+    .f-pkg-card ul li { padding: 0.18rem 0; display: flex; gap: 0.4rem; line-height: 1.4; }
+    .f-pkg-card ul li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .f-pkg-popular { border-color: rgba(0,201,167,0.4); }
+    .f-pkg-badge {
+      position: absolute; top: -1px; right: 1rem;
+      background: var(--teal); color: #0B1120;
+      font-size: 0.65rem; font-weight: 800; padding: 0.18rem 0.55rem;
+      border-radius: 0 0 6px 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* Form navigation */
+    .f-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+    .f-btn-back {
+      background: none; border: 1.5px solid rgba(0,0,0,0.14); color: #777;
+      font-weight: 600; font-size: 0.88rem; padding: 0.72rem 1.4rem;
+      border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .f-btn-back:hover { border-color: #0B1120; color: #0B1120; }
+    .f-btn-next {
+      background: var(--teal); color: #0B1120;
+      font-weight: 800; font-size: 0.92rem; padding: 0.8rem 1.8rem;
+      border: none; border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .f-btn-next:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+    /* Pay button */
+    .f-pay-btn {
+      display: block; width: 100%; background: var(--teal); color: #0B1120;
+      font-weight: 800; font-size: 1rem; padding: 1rem 2rem;
+      border: none; border-radius: 12px; cursor: pointer; font-family: 'Inter', sans-serif;
+      margin-top: 1.5rem; transition: background 0.2s, transform 0.15s;
+    }
+    .f-pay-btn:hover:not(:disabled) { background: var(--teal-dark); transform: translateY(-1px); }
+    .f-pay-btn:disabled { background: #ddd; color: #aaa; cursor: not-allowed; transform: none; }
+    .f-pay-note { font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 0.5rem; }
+
+    /* Conditional fields */
+    .f-conditional { display: none; margin-top: 0.75rem; }
+    .f-conditional.show { display: block; }
+
+    /* Notice boxes */
+    .f-notice { border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.4rem; }
+    .f-notice.gold { background: rgba(240,165,0,0.07); border: 1px solid rgba(240,165,0,0.25); }
+    .f-notice p { font-size: 0.87rem; color: #555; line-height: 1.6; }
+    .f-notice strong { color: var(--gold); }
+    .f-notice.teal { background: rgba(0,201,167,0.06); border: 1px solid rgba(0,201,167,0.2); }
+    .f-notice.teal strong { color: var(--teal-dark); }
+
+    /* Divider */
+    .f-divider { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 1.75rem 0; }
+
+    /* Success */
+    #f-success { display: none; }
+    #f-success.show { display: block; animation: fFadeUp 0.4s ease; }
   </style>
 </head>
 <body>
@@ -457,7 +611,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Launch<span>str</span></div>
-  <a href="form.html" class="nav-cta">Get Started →</a>
+  <a href="#start" class="nav-cta">Get Started →</a>
 </nav>
 
 <!-- SECTION 1: HERO -->
@@ -467,7 +621,7 @@
     <h1>Your Airbnb.<br><span>Your Brand.</span><br>Your Bookings.</h1>
     <p class="hero-sub">We build custom websites and automated social media pipelines for Airbnb owners — so you stop paying platform fees and start owning your guests.</p>
     <p class="hero-proof">✦ Our first client got a direct booking within 4 days of launch.</p>
-    <a href="form.html" class="btn-primary">Get Started →</a>
+    <a href="#start" class="btn-primary">Get Started →</a>
   </div>
 </section>
 
@@ -687,7 +841,7 @@
           <li>Booking platform integration</li>
           <li>30-day onboarding support</li>
         </ul>
-        <a href="form.html" class="btn-outline">Get Started →</a>
+        <a href="#start" class="btn-outline">Get Started →</a>
       </div>
 
       <div class="price-card fade-up delay-1">
@@ -701,7 +855,7 @@
           <li>Buffer scheduling management</li>
           <li>Monthly strategy check-in</li>
         </ul>
-        <a href="form.html" class="btn-outline">Get Started →</a>
+        <a href="#start" class="btn-outline">Get Started →</a>
       </div>
 
       <div class="price-card popular fade-up delay-2">
@@ -716,7 +870,7 @@
           <li>Paid ad creative</li>
           <li>Priority support</li>
         </ul>
-        <a href="form.html" class="btn-outline">Get Started →</a>
+        <a href="#start" class="btn-outline">Get Started →</a>
       </div>
 
     </div>
@@ -783,21 +937,530 @@
   </div>
 </section>
 
-<!-- SECTION 8: FOOTER CTA -->
-<section id="footer-cta">
-  <div class="container">
-    <h2 class="section-title">Ready to Own Your Bookings?</h2>
-    <p class="section-sub" style="margin: 1rem auto 2rem;">Fill out the intake form and we'll get back to you within 24 hours.</p>
-    <a href="form.html" class="btn-primary">Get Started →</a>
+<!-- SECTION 8: INTAKE FORM -->
+<section id="start" style="background: #f5f5f3; padding: 5rem 1.5rem 6rem;">
+  <div class="container text-center" style="max-width: 700px;">
+    <span class="section-label">Get Started</span>
+    <h2 class="section-title">Let's Build Your Brand</h2>
+    <p class="section-sub">Fill this out once — takes about 10 minutes. We handle everything from there.</p>
+
+    <!-- Progress Bar -->
+    <div class="f-progress-wrap">
+      <div class="f-progress-track">
+        <div class="f-progress-fill" id="fProgressFill" style="width: 9.09%"></div>
+      </div>
+      <div class="f-progress-meta">
+        <span id="fProgressLabel">Step 1 of 11</span>
+        <span id="fProgressPct">9%</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="intakeForm" data-netlify="true" name="launchstr-intake" netlify-honeypot="bot-field" action="/success.html" novalidate style="text-align:left">
+      <input type="hidden" name="form-name" value="launchstr-intake" />
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <!-- STEP 1 -->
+      <div class="f-step active f-card" data-fstep="1">
+        <div class="f-eyebrow">Getting Started</div>
+        <h3 class="f-title">Start With Your Listing</h3>
+        <p class="f-sub">If you're on Airbnb or VRBO, drop your URL below. No listing yet? Skip ahead.</p>
+        <div class="f-group">
+          <label class="f-label">Airbnb Listing URL <span class="f-opt">(optional)</span></label>
+          <input class="f-input" type="url" name="airbnb_url" placeholder="https://www.airbnb.com/rooms/12345678" />
+        </div>
+        <div class="f-group">
+          <label class="f-label">VRBO Listing URL <span class="f-opt">(optional)</span></label>
+          <input class="f-input" type="url" name="vrbo_url" placeholder="https://www.vrbo.com/12345678" />
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="f-step f-card" data-fstep="2">
+        <div class="f-eyebrow">Section 1 of 10</div>
+        <h3 class="f-title">About You</h3>
+        <p class="f-sub">Quick contact info so we know who we're building for.</p>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">First Name *</label><input class="f-input" type="text" name="first_name" required placeholder="Jane" /></div>
+          <div class="f-group"><label class="f-label">Last Name *</label><input class="f-input" type="text" name="last_name" required placeholder="Smith" /></div>
+        </div>
+        <div class="f-group"><label class="f-label">Email Address *</label><input class="f-input" type="email" name="email" required placeholder="jane@example.com" /></div>
+        <div class="f-group"><label class="f-label">Phone Number <span class="f-opt">(optional)</span></label><input class="f-input" type="tel" name="phone" placeholder="+1 (555) 000-0000" /></div>
+        <div class="f-group">
+          <label class="f-label">Best way to reach you</label>
+          <select class="f-select" name="contact_pref">
+            <option value="">Select preference...</option>
+            <option>Email</option><option>Text / SMS</option><option>WhatsApp</option><option>Phone call</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Your Time Zone</label>
+          <select class="f-select" name="timezone">
+            <option value="">Select time zone...</option>
+            <option>Eastern (ET)</option><option>Central (CT)</option><option>Mountain (MT)</option>
+            <option>Pacific (PT)</option><option>Alaska (AKT)</option><option>Hawaii (HT)</option><option>Other</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label class="f-label">How did you hear about us? <span class="f-opt">(optional)</span></label>
+          <select class="f-select" name="referral">
+            <option value="">Select one...</option>
+            <option>Facebook group</option><option>Instagram</option><option>Word of mouth / referral</option>
+            <option>Google search</option><option>Reddit</option><option>TikTok</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="f-step f-card" data-fstep="3">
+        <div class="f-eyebrow">Section 2 of 10</div>
+        <h3 class="f-title">Your Property</h3>
+        <p class="f-sub">The basics. The more detail, the better we can brand it.</p>
+        <div class="f-group"><label class="f-label">Property Name <span class="f-opt">(if you have one)</span></label><input class="f-input" type="text" name="property_name" placeholder="e.g. The Gathering Pines" /><p class="f-helper">Don't have one? We'll help create a name.</p></div>
+        <div class="f-group"><label class="f-label">Street Address *</label><input class="f-input" type="text" name="address" required placeholder="123 Mountain View Rd" /></div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">City *</label><input class="f-input" type="text" name="city" required placeholder="Flagstaff" /></div>
+          <div class="f-group"><label class="f-label">State *</label><input class="f-input" type="text" name="state" required placeholder="AZ" /></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">ZIP Code</label><input class="f-input" type="text" name="zip" placeholder="86001" /></div>
+          <div class="f-group"><label class="f-label">Country</label><input class="f-input" type="text" name="country" placeholder="USA" /></div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Property Type *</label>
+          <select class="f-select" name="property_type" required>
+            <option value="">Select type...</option>
+            <option>Single-family home</option><option>Cabin / chalet</option><option>Condo / apartment</option>
+            <option>Townhouse</option><option>Unique stay (treehouse, yurt, etc.)</option><option>Other</option>
+          </select>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">Bedrooms *</label><input class="f-input" type="number" name="bedrooms" required min="0" max="30" placeholder="5" /></div>
+          <div class="f-group"><label class="f-label">Bathrooms *</label><input class="f-input" type="text" name="bathrooms" required placeholder="3.5" /></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">Max Guests *</label><input class="f-input" type="number" name="max_guests" required min="1" placeholder="12" /></div>
+          <div class="f-group"><label class="f-label">Square Footage <span class="f-opt">(approx)</span></label><input class="f-input" type="number" name="sqft" placeholder="3200" /></div>
+        </div>
+        <div class="f-group"><label class="f-label">Elevation <span class="f-opt">(if relevant)</span></label><input class="f-input" type="text" name="elevation" placeholder="e.g. 7,000 ft above sea level" /></div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">Airbnb Star Rating <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="star_rating" placeholder="4.97" /></div>
+          <div class="f-group"><label class="f-label"># of Reviews <span class="f-opt">(optional)</span></label><input class="f-input" type="number" name="review_count" placeholder="42" /></div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Amenities -->
+      <div class="f-step f-card" data-fstep="4">
+        <div class="f-eyebrow">Section 3 of 10</div>
+        <h3 class="f-title">Amenities</h3>
+        <p class="f-sub">Check everything your property offers. These become selling points on the website and in content.</p>
+        <div class="f-amenity-group"><div class="f-amenity-label">🛋 Indoor Comfort</div>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Central AC" /> Central AC</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Central Heat" /> Central Heat</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Fireplace (indoor)" /> Indoor Fireplace</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Wood-burning stove" /> Wood-burning Stove</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="High-speed WiFi" /> High-speed WiFi</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Smart TV / streaming" /> Smart TV / Streaming</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Game room" /> Game Room</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Home theater" /> Home Theater</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Dedicated workspace" /> Dedicated Workspace</label>
+          </div>
+        </div>
+        <div class="f-amenity-group"><div class="f-amenity-label">🍳 Kitchen</div>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Full kitchen" /> Full Kitchen</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Coffee / espresso" /> Coffee / Espresso</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Dishwasher" /> Dishwasher</label>
+          </div>
+          <div class="f-group" style="margin-top:0.75rem"><label class="f-label">Dining table seats how many? <span class="f-opt">(optional)</span></label><input class="f-input" type="number" name="dining_seats" placeholder="10" /></div>
+        </div>
+        <div class="f-amenity-group"><div class="f-amenity-label">🌿 Outdoor</div>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Hot tub / jacuzzi" /> Hot Tub / Jacuzzi</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Private pool" /> Private Pool</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Covered porch / deck" /> Covered Porch / Deck</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Fire pit" /> Fire Pit</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="BBQ grill" /> BBQ Grill</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Outdoor dining" /> Outdoor Dining</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Outdoor fireplace" /> Outdoor Fireplace</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Fenced yard" /> Fenced Yard</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Mountain / forest views" /> Mountain / Forest Views</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Water views" /> Water Views</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Trail access" /> Trail Access</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Large yard / acreage" /> Large Yard / Acreage</label>
+          </div>
+        </div>
+        <div class="f-amenity-group"><div class="f-amenity-label">🔧 Practical</div>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="EV charger" /> EV Charger</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Garage parking" /> Garage Parking</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Washer + dryer" /> Washer + Dryer</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Pack-n-play / crib" /> Pack-n-play / Crib</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="High chair" /> High Chair</label>
+            <label class="f-check-item"><input type="checkbox" name="amenities" value="Baby proofing" /> Baby Proofing</label>
+          </div>
+          <div class="f-group" style="margin-top:0.75rem"><label class="f-label">Free parking — how many vehicles?</label><input class="f-input" type="number" name="parking_count" placeholder="4" /></div>
+        </div>
+        <div class="f-group"><label class="f-label">Other standout amenities <span class="f-opt">(optional)</span></label><textarea class="f-textarea" name="other_amenities" placeholder="e.g. Starlink, ski-in/ski-out, arcade cabinet..."></textarea></div>
+      </div>
+
+      <!-- STEP 5: Location -->
+      <div class="f-step f-card" data-fstep="5">
+        <div class="f-eyebrow">Section 4 of 10</div>
+        <h3 class="f-title">Your Location</h3>
+        <p class="f-sub">Location is your biggest marketing asset. Help us understand what makes your area special.</p>
+        <div class="f-group"><label class="f-label">Nearest major city or town *</label><input class="f-input" type="text" name="nearest_city" required placeholder="e.g. Flagstaff, AZ" /></div>
+        <div class="f-group"><label class="f-label">Distance to downtown <span class="f-opt">(approx)</span></label><input class="f-input" type="text" name="distance_downtown" placeholder="e.g. 10 minutes, 5 miles" /></div>
+        <div class="f-group"><label class="f-label">Top 3–5 reasons people visit your area *</label><textarea class="f-textarea" name="top_attractions" required placeholder="e.g. Grand Canyon, skiing at Snowbowl, Sedona (45 min)..."></textarea></div>
+        <div class="f-group"><label class="f-label">What makes your specific location special? *</label><textarea class="f-textarea" name="location_special" required placeholder="Views, vibe, access, what makes it unique..."></textarea></div>
+        <div class="f-group">
+          <label class="f-label">Climate / season type</label>
+          <select class="f-select" name="climate">
+            <option value="">Select climate...</option>
+            <option>4 seasons</option><option>Mountain (cool summers, snowy winters)</option>
+            <option>Desert (hot summers, mild winters)</option><option>Coastal</option><option>Tropical</option><option>Other</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Major annual events that drive tourism <span class="f-opt">(optional)</span></label><textarea class="f-textarea" name="annual_events" placeholder="e.g. Ski season, local festivals, sporting events..."></textarea></div>
+        <div class="f-group"><label class="f-label">Nearest airport + drive time <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="nearest_airport" placeholder="e.g. Phoenix Sky Harbor (PHX) — 2.5 hours" /></div>
+      </div>
+
+      <!-- STEP 6: Current Presence -->
+      <div class="f-step f-card" data-fstep="6">
+        <div class="f-eyebrow">Section 5 of 10</div>
+        <h3 class="f-title">Your Current Online Presence</h3>
+        <p class="f-sub">Tell us where you already show up so we don't duplicate work.</p>
+        <div class="f-notice gold">
+          <p><strong>⚡ Important:</strong> If you already have an Instagram for this property, we'll build on it — not start from scratch. Answer below.</p>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Do you have a direct booking website already?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_website" value="yes" onchange="fShow('fWebsiteUrl')" /> Yes</label>
+            <label class="f-radio-item"><input type="radio" name="has_website" value="no" onchange="fHide('fWebsiteUrl')" /> No</label>
+          </div>
+          <div class="f-conditional" id="fWebsiteUrl"><label class="f-label">Website URL</label><input class="f-input" type="url" name="website_url" placeholder="https://yourproperty.com" /></div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Do you already have an Instagram for this property? *</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_instagram" value="yes" required onchange="fShow('fIgDetails')" /> Yes — I already have one</label>
+            <label class="f-radio-item"><input type="radio" name="has_instagram" value="no" onchange="fHide('fIgDetails')" /> No — please create one for me</label>
+          </div>
+          <div class="f-conditional" id="fIgDetails">
+            <div class="f-row">
+              <div class="f-group"><label class="f-label">Instagram Handle</label><input class="f-input" type="text" name="ig_handle" placeholder="@thegatheringpines" /></div>
+              <div class="f-group"><label class="f-label">Current Followers</label><input class="f-input" type="number" name="ig_followers" placeholder="248" /></div>
+            </div>
+            <div class="f-group"><label class="f-label">Anything about the account we should know?</label><input class="f-input" type="text" name="ig_notes" placeholder="e.g. Posts inconsistently, no strategy yet..." /></div>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Do you have a Facebook page for this property?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_facebook" value="yes" onchange="fShow('fFbUrl')" /> Yes</label>
+            <label class="f-radio-item"><input type="radio" name="has_facebook" value="no" onchange="fHide('fFbUrl')" /> No</label>
+          </div>
+          <div class="f-conditional" id="fFbUrl"><label class="f-label">Facebook Page URL</label><input class="f-input" type="url" name="fb_url" placeholder="https://facebook.com/yourproperty" /></div>
+        </div>
+        <div class="f-group"><label class="f-label">Other social platforms? <span class="f-opt">(TikTok, Pinterest, etc.)</span></label><input class="f-input" type="text" name="other_social" placeholder="e.g. TikTok: @yourproperty (1.2k followers)" /></div>
+      </div>
+
+      <!-- STEP 7: Your Guests -->
+      <div class="f-step f-card" data-fstep="7">
+        <div class="f-eyebrow">Section 6 of 10</div>
+        <h3 class="f-title">Your Ideal Guests</h3>
+        <p class="f-sub">We write content for the people most likely to book your property.</p>
+        <div class="f-group">
+          <label class="f-label">Who are your ideal guests? <span class="f-opt">(check all that apply)</span></label>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Families with young kids" /> Families with young kids</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Multi-generational families" /> Multi-generational families</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Large friend groups" /> Large friend groups</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Couples / romantic getaway" /> Couples / romantic getaway</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Bachelorette / bachelor parties" /> Bachelorette / bachelor parties</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Corporate retreats" /> Corporate retreats</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Adventure / outdoor travelers" /> Adventure / outdoor travelers</label>
+            <label class="f-check-item"><input type="checkbox" name="guest_types" value="Snowbirds / long-stays" /> Snowbirds / long-stays</label>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">Average group size</label><input class="f-input" type="text" name="avg_group_size" placeholder="e.g. 8–10 people" /></div>
+          <div class="f-group">
+            <label class="f-label">Typical stay length</label>
+            <select class="f-select" name="typical_stay"><option value="">Select...</option><option>2 nights</option><option>3–5 nights</option><option>Weekly (7 nights)</option><option>Varies</option></select>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Peak booking seasons <span class="f-opt">(check all)</span></label>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="peak_seasons" value="Spring" /> Spring</label>
+            <label class="f-check-item"><input type="checkbox" name="peak_seasons" value="Summer" /> Summer</label>
+            <label class="f-check-item"><input type="checkbox" name="peak_seasons" value="Fall" /> Fall</label>
+            <label class="f-check-item"><input type="checkbox" name="peak_seasons" value="Winter" /> Winter</label>
+            <label class="f-check-item"><input type="checkbox" name="peak_seasons" value="Year-round" /> Year-round</label>
+          </div>
+        </div>
+        <div class="f-group"><label class="f-label">Where do most guests come from? <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="guest_origin" placeholder="e.g. Mostly Phoenix + Tucson, some LA weekenders" /></div>
+      </div>
+
+      <!-- STEP 8: Booking & Ops -->
+      <div class="f-step f-card" data-fstep="8">
+        <div class="f-eyebrow">Section 7 of 10</div>
+        <h3 class="f-title">Booking & Operations</h3>
+        <p class="f-sub">We'll integrate your site with your existing setup — no double bookings.</p>
+        <div class="f-group">
+          <label class="f-label">Booking platforms you're on <span class="f-opt">(check all)</span></label>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="booking_platforms" value="Airbnb" /> Airbnb</label>
+            <label class="f-check-item"><input type="checkbox" name="booking_platforms" value="VRBO" /> VRBO</label>
+            <label class="f-check-item"><input type="checkbox" name="booking_platforms" value="Booking.com" /> Booking.com</label>
+            <label class="f-check-item"><input type="checkbox" name="booking_platforms" value="Hospitable Direct" /> Hospitable Direct</label>
+            <label class="f-check-item"><input type="checkbox" name="booking_platforms" value="None yet" /> None yet</label>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Property Management System (PMS)</label>
+          <select class="f-select" name="pms"><option value="">Select or none...</option><option>Hospitable / Smartbnb</option><option>OwnerRez</option><option>Hostaway</option><option>Guesty</option><option>Hostfully</option><option>Lodgify</option><option>None</option><option>Other</option></select>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Direct booking widget on your site?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="direct_booking_widget" value="yes" /> Yes — let's get off OTAs</label>
+            <label class="f-radio-item"><input type="radio" name="direct_booking_widget" value="not_sure" /> Not sure — let's discuss</label>
+            <label class="f-radio-item"><input type="radio" name="direct_booking_widget" value="no" /> No — just marketing for now</label>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label class="f-label">Minimum stay (nights)</label><input class="f-input" type="number" name="min_stay" placeholder="2" /></div>
+          <div class="f-group"><label class="f-label">Guest contact name</label><input class="f-input" type="text" name="guest_contact_name" placeholder="Jane Smith" /></div>
+        </div>
+        <div class="f-group"><label class="f-label">Guest contact email</label><input class="f-input" type="email" name="guest_contact_email" placeholder="stays@yourproperty.com" /></div>
+      </div>
+
+      <!-- STEP 9: Brand & Style -->
+      <div class="f-step f-card" data-fstep="9">
+        <div class="f-eyebrow">Section 8 of 10</div>
+        <h3 class="f-title">Brand & Style</h3>
+        <p class="f-sub">We don't do templates. We create something that actually fits your property.</p>
+        <div class="f-group">
+          <label class="f-label">Do you have a brand name for this property?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_brand_name" value="yes" onchange="fShow('fBrandName')" /> Yes</label>
+            <label class="f-radio-item"><input type="radio" name="has_brand_name" value="no" onchange="fHide('fBrandName')" /> No — help me create one</label>
+          </div>
+          <div class="f-conditional" id="fBrandName"><label class="f-label">Brand / property name</label><input class="f-input" type="text" name="brand_name" placeholder="e.g. The Gathering Pines" /></div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Do you have a logo?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_logo" value="yes" /> Yes (upload with photos)</label>
+            <label class="f-radio-item"><input type="radio" name="has_logo" value="no" /> No</label>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Property vibe <span class="f-opt">(pick 1–2)</span></label>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="style" value="Rustic & cozy" /> 🩵 Rustic & cozy</label>
+            <label class="f-check-item"><input type="checkbox" name="style" value="Modern & luxury" /> ✨ Modern & luxury</label>
+            <label class="f-check-item"><input type="checkbox" name="style" value="Coastal & laid-back" /> 🌊 Coastal & laid-back</label>
+            <label class="f-check-item"><input type="checkbox" name="style" value="Desert & earthy" /> 🌵 Desert & earthy</label>
+            <label class="f-check-item"><input type="checkbox" name="style" value="Bright & airy" /> ☀️ Bright & airy</label>
+            <label class="f-check-item"><input type="checkbox" name="style" value="Adventurous & outdoorsy" /> 🏔 Adventurous & outdoorsy</label>
+          </div>
+        </div>
+        <div class="f-group"><label class="f-label">Brand color preferences <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="colors" placeholder="Love: deep greens. Hate: neon." /></div>
+        <div class="f-group"><label class="f-label">Inspiration (site or IG you love) <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="inspo_reference" placeholder="@example or https://example.com" /></div>
+        <div class="f-group"><label class="f-label">Tagline ideas <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="tagline_ideas" placeholder="e.g. 'Where the pines meet the stars'" /></div>
+        <div class="f-group"><label class="f-label">Property story <span class="f-opt">(optional — but powerful)</span></label><textarea class="f-textarea" name="property_story" placeholder="How did you get it? What makes it unique? What should guests feel when they arrive?"></textarea></div>
+      </div>
+
+      <!-- STEP 10: Photos -->
+      <div class="f-step f-card" data-fstep="10">
+        <div class="f-eyebrow">Section 9 of 10</div>
+        <h3 class="f-title">Property Photos</h3>
+        <p class="f-sub">Upload your best shots — exterior, interior, outdoor spaces, and any special features. Up to 40 photos.</p>
+        <div class="f-group">
+          <label class="f-label">Do you have professional photos?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="has_pro_photos" value="yes" /> Yes — professionally shot</label>
+            <label class="f-radio-item"><input type="radio" name="has_pro_photos" value="in_progress" /> In progress</label>
+            <label class="f-radio-item"><input type="radio" name="has_pro_photos" value="no" /> No — using phone photos for now</label>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Upload photos <span class="f-opt">(up to 40)</span></label>
+          <div class="f-file-zone" id="fFileZone">
+            <input type="file" id="fPhotoUpload" name="photos" multiple accept="image/jpeg,image/png,image/webp" />
+            <div class="f-file-zone-icon">📸</div>
+            <h4>Drag & drop photos here</h4>
+            <p>or click to browse · JPG, PNG, WebP</p>
+            <div class="f-file-count" id="fFileCount"></div>
+          </div>
+          <p class="f-helper">Include exterior, all rooms, outdoor spaces, and special features. We'll send a Google Drive link for additional photos after payment.</p>
+        </div>
+        <div class="f-group">
+          <label class="f-check-item" style="background:rgba(0,201,167,0.04);border-color:rgba(0,201,167,0.2)">
+            <input type="checkbox" name="photo_permission" value="yes" id="fPhotoPermission" required />
+            I give Launchstr permission to use my photos on the website and in social media content.
+          </label>
+        </div>
+        <div class="f-group"><label class="f-label">Photos you do NOT want used <span class="f-opt">(optional)</span></label><textarea class="f-textarea" name="photo_exclusions" style="min-height:70px" placeholder="e.g. Skip the basement bedroom — it's under renovation."></textarea></div>
+      </div>
+
+      <!-- STEP 11: Goals & Package -->
+      <div class="f-step f-card" data-fstep="11">
+        <div class="f-eyebrow">Final Step</div>
+        <h3 class="f-title">Goals & Package</h3>
+        <p class="f-sub">Almost done. Tell us what you want to accomplish, pick your package, and pay to lock in your spot.</p>
+        <div class="f-group">
+          <label class="f-label">Primary goals <span class="f-opt">(check all)</span></label>
+          <div class="f-check-grid">
+            <label class="f-check-item"><input type="checkbox" name="goals" value="Get more bookings" /> Get more bookings</label>
+            <label class="f-check-item"><input type="checkbox" name="goals" value="Reduce OTA fees" /> Reduce Airbnb / OTA fees</label>
+            <label class="f-check-item"><input type="checkbox" name="goals" value="Build a real brand" /> Build a real brand</label>
+            <label class="f-check-item"><input type="checkbox" name="goals" value="Fill specific open dates" /> Fill specific open dates</label>
+            <label class="f-check-item"><input type="checkbox" name="goals" value="Grow Instagram following" /> Grow Instagram following</label>
+          </div>
+        </div>
+        <div class="f-group"><label class="f-label">Specific dates or months to fill <span class="f-opt">(optional)</span></label><input class="f-input" type="text" name="open_dates" placeholder="e.g. August + September are wide open" /></div>
+        <div class="f-group">
+          <label class="f-label">How soon do you want to launch?</label>
+          <div class="f-radio-group">
+            <label class="f-radio-item"><input type="radio" name="launch_timeline" value="ASAP" /> ASAP — let's go</label>
+            <label class="f-radio-item"><input type="radio" name="launch_timeline" value="Within 30 days" /> Within 30 days</label>
+            <label class="f-radio-item"><input type="radio" name="launch_timeline" value="1–3 months" /> 1–3 months</label>
+            <label class="f-radio-item"><input type="radio" name="launch_timeline" value="Just exploring" /> Just exploring</label>
+          </div>
+        </div>
+        <div class="f-group"><label class="f-label">Anything else we should know? <span class="f-opt">(open field)</span></label><textarea class="f-textarea" name="other_context" style="min-height:80px" placeholder="Property story, concerns, questions, special requests..."></textarea></div>
+
+        <hr class="f-divider" />
+        <div class="f-eyebrow" style="margin-bottom:0.5rem">Choose Your Package</div>
+        <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.35rem;color:#0B1120">Pick what's right for you</h4>
+        <p style="font-size:0.88rem;color:#666;margin-bottom:1.25rem">All packages include the full Launch setup. Growth and Premium add ongoing monthly marketing.</p>
+        <div class="f-pkg-grid">
+          <div class="f-pkg-card" data-stripe="https://buy.stripe.com/test_aFaaEW9vcdg02qaaXV7EQ00" onclick="fSelectPkg(this)">
+            <input type="radio" name="selected_package" value="Launch — $997 one-time" />
+            <div class="f-pkg-name">Launch</div>
+            <div class="f-pkg-price">$997</div>
+            <div class="f-pkg-cadence">one-time</div>
+            <ul>
+              <li>Custom website</li><li>Instagram setup + branding</li>
+              <li>First 8 post drafts</li><li>Booking integration</li><li>30-day support</li>
+            </ul>
+          </div>
+          <div class="f-pkg-card f-pkg-popular" data-stripe="https://buy.stripe.com/test_dRm00ibDk3Fq2qa8PN7EQ01" onclick="fSelectPkg(this)">
+            <span class="f-pkg-badge">Most Popular</span>
+            <input type="radio" name="selected_package" value="Growth — $997 + $297/mo" />
+            <div class="f-pkg-name">Growth</div>
+            <div class="f-pkg-price">$297<span style="font-size:0.9rem;font-weight:600">/mo</span></div>
+            <div class="f-pkg-cadence">+ $997 setup</div>
+            <ul>
+              <li>Everything in Launch</li><li>2 post drafts/week</li>
+              <li>Weekly event research</li><li>Buffer management</li><li>Monthly review</li>
+            </ul>
+          </div>
+          <div class="f-pkg-card" data-stripe="https://buy.stripe.com/test_fZu3cubDk2BmaWG6HF7EQ02" onclick="fSelectPkg(this)">
+            <input type="radio" name="selected_package" value="Premium — $997 + $497/mo" />
+            <div class="f-pkg-name">Premium</div>
+            <div class="f-pkg-price">$497<span style="font-size:0.9rem;font-weight:600">/mo</span></div>
+            <div class="f-pkg-cadence">+ $997 setup</div>
+            <ul>
+              <li>Everything in Growth</li><li>IG Stories (2–3/week)</li>
+              <li>Highlight covers</li><li>Ad creatives</li><li>Priority support</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="f-pay-btn" id="fPayBtn" onclick="fSubmitAndPay()" disabled>Select a Package Above to Continue →</button>
+        <p class="f-pay-note">🔒 Secured by Stripe · Encrypted · No surprise charges</p>
+      </div>
+
+    </form>
+
+    <!-- Success screen -->
+    <div id="f-success" class="f-card" style="text-align:center;padding:2.5rem 2rem">
+      <div style="font-size:3rem;margin-bottom:0.75rem">🎉</div>
+      <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:0.5rem">You're in. Let's build.</h3>
+      <p style="color:#666;font-size:0.92rem;max-width:400px;margin:0 auto 0.75rem">Form submitted. Redirecting you to complete payment...</p>
+      <p style="font-size:0.82rem;color:#aaa">Not redirected? <a href="#" id="fManualPay" style="color:var(--teal);font-weight:600">Click here.</a></p>
+    </div>
+
+    <!-- Form nav buttons -->
+    <div class="f-nav" id="fFormNav">
+      <button class="f-btn-back" id="fBackBtn" style="visibility:hidden">← Back</button>
+      <button class="f-btn-next" id="fNextBtn">Continue →</button>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p><a href="mailto:hello@launchstr.io">hello@launchstr.io</a> &nbsp;·&nbsp; <a href="form.html">Get Started</a> &nbsp;·&nbsp; © 2026 Launchstr. All rights reserved.</p>
+  <p><a href="mailto:hello@launchstr.io">hello@launchstr.io</a> &nbsp;·&nbsp; <a href="#start">Get Started</a> &nbsp;·&nbsp; © 2026 Launchstr. All rights reserved.</p>
 </footer>
 
 <script>
-  // FAQ Accordion
+  // ── EMBEDDED FORM ──
+  const F_TOTAL = 11;
+  let fStep = 1;
+  let fStripeLink = null;
+
+  function fShowStep(n) {
+    document.querySelectorAll('.f-step').forEach(s => s.classList.remove('active'));
+    const target = document.querySelector('[data-fstep="' + n + '"]');
+    if (target) target.classList.add('active');
+    const pct = Math.round((n / F_TOTAL) * 100);
+    document.getElementById('fProgressFill').style.width = pct + '%';
+    document.getElementById('fProgressLabel').textContent = 'Step ' + n + ' of ' + F_TOTAL;
+    document.getElementById('fProgressPct').textContent = pct + '%';
+    const back = document.getElementById('fBackBtn');
+    const next = document.getElementById('fNextBtn');
+    back.style.visibility = n === 1 ? 'hidden' : 'visible';
+    next.style.display = n === F_TOTAL ? 'none' : 'inline-block';
+    document.getElementById('start').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('fNextBtn').addEventListener('click', () => {
+    if (fStep < F_TOTAL) { fStep++; fShowStep(fStep); }
+  });
+  document.getElementById('fBackBtn').addEventListener('click', () => {
+    if (fStep > 1) { fStep--; fShowStep(fStep); }
+  });
+
+  function fShow(id) { const el = document.getElementById(id); if (el) el.classList.add('show'); }
+  function fHide(id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
+
+  function fSelectPkg(card) {
+    document.querySelectorAll('.f-pkg-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    card.querySelector('input[type="radio"]').checked = true;
+    fStripeLink = card.dataset.stripe;
+    const btn = document.getElementById('fPayBtn');
+    btn.disabled = false;
+    btn.textContent = 'Submit & Pay — ' + card.querySelector('.f-pkg-name').textContent + ' →';
+  }
+
+  // Photo upload counter
+  document.getElementById('fPhotoUpload').addEventListener('change', function() {
+    const n = this.files.length;
+    document.getElementById('fFileCount').textContent = n > 0 ? n + ' photo' + (n !== 1 ? 's' : '') + ' selected' : '';
+  });
+
+  // Drag styling
+  const fZone = document.getElementById('fFileZone');
+  ['dragover','dragenter'].forEach(e => fZone.addEventListener(e, ev => { ev.preventDefault(); fZone.classList.add('drag-over'); }));
+  ['dragleave','drop'].forEach(e => fZone.addEventListener(e, () => fZone.classList.remove('drag-over')));
+
+  function fSubmitAndPay() {
+    if (!fStripeLink) return;
+    const btn = document.getElementById('fPayBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    try { sessionStorage.setItem('launchstr_stripe', fStripeLink); } catch(e) {}
+    document.getElementById('intakeForm').submit();
+  }
+
+  // ── FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
